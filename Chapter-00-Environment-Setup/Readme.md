@@ -32,19 +32,30 @@ minikube status
 # Step 5: Confirm kubectl is connected to Minikube
 kubectl get nodes
 
-## 5. Expected Output Box
-+----------------------------------------------------------------------+
-| $ docker ps                                                          |
-| CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS         |
-| (If Docker is running, this command will return an empty list or IDs)|
-|                                                                      |
-| $ minikube start                                                     |
-| * minikube v1.37.0 on Windows 11                                     |
-| * Using the docker driver based on user configuration                |
-| * Starting control plane node minikube in cluster minikube           |
-| * Done! kubectl is now configured to use "minikube" cluster          |
-|                                                                      |
-| $ kubectl get nodes                                                  |
-| NAME       STATUS   ROLES           AGE   VERSION                    |
-| minikube   Ready    control-plane   1m    v1.31.0                    |
-+----------------------------------------------------------------------+
+
+## 5. Code (Connection Troubleshooting & Verification
+
+# --- THE ERROR SCENARIOS (What you saw when it failed) ---
+# C:\Users>kubectl run my-pod --image=nginx
+Unable to connect to the server: http2: client connection lost
+
+# C:\Users>kubectl run my-pod --image=nginx
+Unable to connect to the server: net/http: TLS handshake timeout
+
+# --- THE DIAGNOSTIC COMMANDS ---
+
+# 1. Check if the cluster is reachable
+kubectl cluster-info
+
+# 2. List all available contexts (Your Command)
+kubectl config get-contexts
+
+# 3. Check which context is currently active (Your Command)
+kubectl config current-context
+
+# 4. Manually force the switch to Minikube (Your Command)
+kubectl config use-context minikube
+
+# 5. Final check of the system state
+kubectl get nodes
+kubectl get pods -A
