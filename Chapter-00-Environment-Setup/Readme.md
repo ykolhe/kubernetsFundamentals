@@ -33,7 +33,7 @@ minikube status
 kubectl get nodes
 
 
-## 5. Code (Connection Troubleshooting & Verification
+## 5. Code (Connection Troubleshooting & Verification)
 
 # --- THE ERROR SCENARIOS (What you saw when it failed) ---
 # C:\Users>kubectl run my-pod --image=nginx
