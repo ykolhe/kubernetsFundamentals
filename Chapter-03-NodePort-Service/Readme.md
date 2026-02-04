@@ -26,6 +26,7 @@ minikube service nginx-service --url
 # 5. Cleanup: Delete the service and the pod
 # Syntax: kubectl delete service <SERVICE_NAME>
 kubectl delete svc nginx-service
+
 kubectl delete pod nginx
 
 # Expected Output Box
